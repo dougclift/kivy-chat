@@ -1,0 +1,13 @@
+#:include kv/loginscreen.kv
+#:include kv/chatscreen.kv
+
+GridLayout:
+  cols: 1
+  ScreenManager:
+    id: screen_manager
+    LoginScreen:
+      name: "login_screen"
+      id: login_screen
+    ChatScreen:
+      name: "chat_screen"
+      id: chat_screen

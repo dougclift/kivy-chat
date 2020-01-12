@@ -1,0 +1,52 @@
+#: import utils kivy.utils
+<ChatScreen>:
+  FloatLayout:
+    MDBanner:
+      id: banner
+      over_widget: scroll
+
+    MDToolbar:
+      id: toolbar
+      md_bg_color: app.theme_cls.primary_color
+      elevation: 5
+      left_action_items: [["arrow-left-bold", lambda x: app.change_screen('login_screen', 'right')]]
+      pos_hint: {'top': 1}
+    ScrollView:
+      # canvas:
+      #   Color:
+      #     rgb: utils.get_color_from_hex("#dddddd")
+      #   Rectangle:
+      #     size: self.size
+      #     pos: self.pos
+
+      id: scroll
+      size_hint_y: None
+      height: Window.height - toolbar.height - toolbar_bottom.height 
+      pos_hint: {'top': .89}
+
+      BoxLayout:
+        id: chat_log
+        size_hint_y: None
+        height: self.minimum_height
+        orientation: 'vertical'
+        spacing: "30dp"
+
+        Widget:
+          
+    BoxLayout:
+      id: toolbar_bottom
+      pos_hint: {"bottom": 1}
+      spacing: "10dp"
+      padding: "10dp"
+      orientation: 'horizontal'
+      size_hint_y: None
+
+      MDTextFieldRect:
+        id: msg
+
+      MDFlatButton:
+        id: send_button
+        text: "Send Msg"
+        text_color: 1, 1, 1, 1  
+        md_bg_color: app.theme_cls.primary_color
+        on_release: app.send_msg(msg.text)
